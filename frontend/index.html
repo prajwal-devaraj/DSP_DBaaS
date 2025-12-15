@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure DB System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Secure Healthcare DB</h1>
+        <nav>
+            <!-- this will show user info or a login button -->
+            <div id="user-session">
+                <span id="session-username" class="hidden"></span>
+                <button id="logout-button" class="hidden">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- this is a div to show error/success messages to the user -->
+        <div id="message-container" class="message hidden"></div>
+
+        <!-- 
+          PAGE 1: LOGIN (Default visible)
+        -->
+        <div id="page-login" class="page-container">
+            <div class="form-container">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="show-register-link">Register</a></p>
+            </div>
+        </div>
+
+        <!-- 
+          PAGE 2: REGISTER (Hidden by default)
+        -->
+        <div id="page-register" class="page-container hidden">
+            <div class="form-container">
+                <h2>Register</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-username">Username</label>
+                        <input type="text" id="register-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-occupation">Occupation</label>
+                        <select id="register-occupation" required>
+                            <option value="">-- Select Occupation --</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Nurse">Nurse</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Researcher">Researcher</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                </form>
+                <p>Already have an account? <a href="#" id="show-login-link">Login</a></p>
+            </div>
+        </div>
+
+        <!-- 
+          PAGE 3: MAIN APP (Hidden by default)
+          this is where we will put the patient data table
+        -->
+        <div id="page-app" class="page-container hidden">
+            <h2>Patient Database</h2>
+            <p>Welcome, <span id="app-username"></span>!</p>
+
+            <!-- controls section -->
+            <div class="app-controls">
+                <button id="btn-view-all" class="btn" style="margin-bottom: 1rem;">View All Patients</button>
+
+                <!-- ope search section -->
+                <div id="ope-search-container"
+                    style="border: 1px solid #ccc; padding: 10px; margin-bottom: 1rem; border-radius: 5px;">
+                    <h3>Search by Weight (Encrypted OPE)</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="search-min" placeholder="Min Weight (kg)" step="0.1">
+                        <input type="number" id="search-max" placeholder="Max Weight (kg)" step="0.1">
+                        <button id="btn-search-weight" class="btn" style="width: auto;">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- add patient form (hidden for researchers) -->
+            <div id="add-patient-container" class="hidden"
+                style="margin-bottom: 2rem; border-top: 1px solid #eee; padding-top: 1rem;">
+                <h3>Add New Patient</h3>
+                <form id="add-patient-form">
+                    <div class="form-group">
+                        <input type="text" id="p-first" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="p-last" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="p-gender" required>
+                            <option value="true">Male</option>
+                            <option value="false">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="p-age" placeholder="Age" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="p-weight" placeholder="Weight (kg)" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="p-height" placeholder="Height (cm)" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="p-history" placeholder="Health History" rows="3"
+                            style="width: 100%; border:1px solid #ccc; border-radius:4px; padding: 0.5rem;"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Add Patient</button>
+                </form>
+            </div>
+
+            <!-- results table -->
+            <div id="app-content">
+                <p style="color: #666;">Click "View All Patients" or Search to see data.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- load the JavaScript file at the end -->
+    <script src="app.js"></script>
+</body>
+
+</html>
