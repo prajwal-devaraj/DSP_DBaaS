@@ -3,29 +3,29 @@ A secure intermediary application designed to protect sensitive healthcare data 
 
 ## Key security features
 
-### ✅ User Authentication
+### User Authentication
 - Secure registration & login  
 - `bcrypt` password hashing  
 - Session security via **JWT (JSON Web Tokens)**  
 
-### 🔐 Role-Based Access Control (RBAC)
+### Role-Based Access Control (RBAC)
 - **Group H (Doctors/Nurses):** Full access (add + view)  
 - **Group R (Researchers):** View-only with **PII redaction** (names → `***`)  
 
-### 🔏 Data Confidentiality
+### Data Confidentiality
 Sensitive fields encrypted using **AES-GCM** (randomized encryption):
 - Gender  
 - Age  
 
-### 🧾 Data Integrity
+### Data Integrity
 - Each row includes an **HMAC-SHA256** signature  
 - Detects single-bit modifications  
 
-### ⛓️ Query Completeness
+### Query Completeness
 - Implemented using a **cryptographic hash chain**  
 - Detects row omission or deletion  
 
-### 📊 Order Preserving Encryption (OPE)
+### Order Preserving Encryption (OPE)
 - Weight values encrypted using **OPE**  
 - Supports range queries like:  
   ```sql
