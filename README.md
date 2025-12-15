@@ -162,7 +162,3 @@ Open your browser and navigate to:
 - Manually **delete a row** in your SQL database
 - The frontend will show: **"Fatal Error: Chain Broken"**
 
-### Team Members
-- Mounika Seelam
-- Amitha Ajithkumar
-- Prajwal Devaraj
